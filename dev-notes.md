@@ -12,3 +12,6 @@
 8. Create a function that will recieve the data (refered in step 3)
 9. Manage the return of the call with destructuring
 10. Keep the call to the function that makes the http request inside of useEffect()
+11. Remember that any piece of code used in useEffect and defined inside of the component, must be part of the dependencies, but if we add the same function executed inside the useEffect as a dependency, it will create an infinite loop because inside of the hook ther are states been managed, and those states changes will trigger the re-render of the component where the hook is used, then the hook will execute again and the fuction that is used in the useEffect will be a different one (diferenct object after re-rendering), that will trigger the same chain of events again and again
+12. To solve 11, whe must use useCallback for the function used inside useEffect
+13. 12 brings another issue, as the dependencies are objects (one is a function and one is an object literal), we can solve this issue wrapping the function with useCallback, but the object literal will be another tricky challege we can solve with useMemo, although, this indicates that the logic inside the custom hook is a good place to refactor and avoid all those issues
