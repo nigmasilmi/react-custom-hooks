@@ -16,3 +16,5 @@
 12. To solve 11, whe must use useCallback for the function used inside useEffect
 13. 12 brings another issue, as the dependencies are objects (one is a function and one is an object literal), we can solve this issue wrapping the function with useCallback, but the object literal will be another tricky challege we can solve with useMemo, although, this indicates that the logic inside the custom hook is a good place to refactor and avoid all those issues
 14. Make the requestConfig (the object literal referred in 13) as parameter of the sendRequest itself and not a parameter for the hook, in that sense, this won't be a dependency for the useCallback
+15. Place the requestConfig object as parameter for the sendRequest function
+16. To avoid the useCallback for the data transformation function, define the latter inside the useEffect and pass it as a parameter for the sendRequest function
