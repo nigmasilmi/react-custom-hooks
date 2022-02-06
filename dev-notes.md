@@ -20,3 +20,8 @@
 16. To avoid the useCallback for the data transformation function, define the latter inside the useEffect and pass it as a parameter for the sendRequest function
 17. Use the hook in other files. E.g. NewTask.js => Refactor to accommodate to the hook.
 18. One important piece of data is not available now: the taskText
+19. To solve 18:
+    19.1 Pass the taskText as a parameter for createTask
+    19.2 But the correspondent function in the custom hook expects just one argument, that can be solved using bind()
+    19.3 bind() allows to pre-configure a function, receives 2 arguments, the first is to configure the "this" and the second will be the first argument to receive by that "to be function"
+20. Now the custom hook is fully configurable for any kind of request and will perform optimally
